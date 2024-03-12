@@ -22,7 +22,7 @@
 	<div id="wrapper" class="fade-in">
 		<!-- Intro -->
 		<div id="intro">
-			<img class="profile-img" src="images/eu3.jpeg" />
+			<img class="profile-img" src="images/eu2.jpeg" />
 			<h1>Eduardo Gualberto</h1>
 			<p> Web/Mobile Development Engineer.</br>
 				Self-starter, quick learner, and tooling passionate.</br>
@@ -40,8 +40,9 @@
 		<!-- Nav -->
 		<nav id="nav">
 			<ul class="links">
-				<li id="we-click-li"><a id="we-click">Work Experience</a></li>
-				<li id="mp-click-li"><a id="mp-click">My Projects</a></li>
+				<li class="to-rc" id="we-click-li"><a id="we-click">Work Experience</a></li>
+        <li class="to-rc" id="ae-click-li"><a id="ae-click">Academic Experience</a></li>
+				<li class="to-rc" id="mp-click-li"><a id="mp-click">Projects</a></li>
 			</ul>
 			<ul class="icons">
 				<li><a href="https://www.linkedin.com/in/eduardo-gualberto-338441147/"
@@ -55,6 +56,7 @@
 		<div id="main">
 			<div data-include="workExperience" class="to-hide" hidden></div>
 			<div data-include="myProjects" class="to-hide" hidden></div>
+      <div data-include="academicExperience" class="to-hide" hidden></div>
 		</div>
 
 		<!-- Footer -->
@@ -106,13 +108,16 @@
 
 	<script defer>
 		let toHides = $(".to-hide").toArray();
+    let toRemoveClass = $(".to-rc").toArray(); 
 
 		$("#we-click").on("click", function () {
 			toHides.forEach((toHide) => {
 				$(toHide).hide();
-			});
+			})
+      toRemoveClass.forEach((toRC) => {
+        $(toRC).removeClass("active");
+      })
 			$("div[data-include='workExperience']").show();
-			$("#mp-click-li").removeClass("active");
 			$("#we-click-li").addClass("active");
 		});
 
@@ -120,16 +125,31 @@
 			toHides.forEach((toHide) => {
 				$(toHide).hide();
 			});
+      toRemoveClass.forEach((toRC) => {
+        $(toRC).removeClass("active");
+      })
 			$("div[data-include='myProjects']").show();
-			$("#we-click-li").removeClass("active");
 			$("#mp-click-li").addClass("active");
 		});
+    $("#ae-click").on("click", function () {
+			toHides.forEach((toHide) => {
+				$(toHide).hide();
+			});
+      toRemoveClass.forEach((toRC) => {
+        $(toRC).removeClass("active");
+      })
+			$("div[data-include='academicExperience']").show();
+			$("#ae-click-li").addClass("active");
+		});
+
 
 		toHides.forEach((toHide) => {
 			$(toHide).hide();
 		});
+    toRemoveClass.forEach((toRC) => {
+      $(toRC).removeClass("active");
+    });
 		$("div[data-include='workExperience']").show();
-		$("#mp-click-li").removeClass("active");
 		$("#we-click-li").addClass("active");
 
 	</script>
